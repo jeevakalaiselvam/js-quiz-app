@@ -167,7 +167,9 @@ submitE.addEventListener("click", () => {
       //hide all quiz elements to make space for result information
       quizContainer.style.display = "none";
       resultContainer.style.display = "inline-block";
-      resultContainer.innerText = `Your score ${score}`;
+      resultContainer.innerHTML = `<h2>Your score ${score} </h2>
+      <br/>
+      <button onclick="location.reload()">Reload</button>`;
     }
 
     if (currentQuestion == quizData.length - 1)
