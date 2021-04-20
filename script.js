@@ -152,19 +152,15 @@ function loadQuiz() {
 }
 
 submitE.addEventListener("click", () => {
+  getSelectedValueAndEvaluate();
   //Check if any option is selected
   const checkIfOptionSelected = checkSelectedStatus();
 
   if (!checkIfOptionSelected) {
     alert("You need to select at least one option !");
   } else {
-    if (currentQuestion == quizData.length - 1)
-      submitE.innerText = "Finish Quiz";
-
     // compare selected to correct answer and evaluate score
-    getSelectedValueAndEvaluate();
-
-    if (currentQuestion < quizData.length) {
+    if (currentQuestion < quizData.length - 1) {
       currentQuestion++;
       loadQuiz();
     } else {
@@ -173,5 +169,8 @@ submitE.addEventListener("click", () => {
       resultContainer.style.display = "inline-block";
       resultContainer.innerText = `Your score ${score}`;
     }
+
+    if (currentQuestion == quizData.length - 1)
+      submitE.innerText = "Finish Quiz";
   }
 });
